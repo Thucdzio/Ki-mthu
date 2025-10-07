@@ -33,19 +33,8 @@ BmiResult bmi_calculate(double weight_kg, double height_m)
 }
 int main()
 {
-    assert(bmi_calculate(-1, 1.7).category == "Underweight");
-    assert(bmi_calculate(0, 1.70).category == "Normal");
-    assert(bmi_calculate(53.4, 1.70).category == "Normal");
-    assert(bmi_calculate(53.5, 1.70).category == "Overweight");
-    assert(bmi_calculate(71.9, 1.70).category == "Overweight");
-    assert(bmi_calculate(72.3, 1.70).category == "Obesity I");
-    assert(bmi_calculate(86.3, 1.70).category == "Obesity I");
-    assert(bmi_calculate(86.7, 1.70).category == "Obesity II");
-    assert(bmi_calculate(100.9, 1.70).category == "Obesity II");
-    assert(bmi_calculate(101.2, 1.70).category == "Obesity III");
-    assert(bmi_calculate(115.3, 1.70).category == "Obesity III");
-    assert(bmi_calculate(115.6, 1.70).category == "Obesity III");
-    assert(bmi_calculate(115.9, 1.70).category == "Obesity III");
+    ios::sync_with_stdio(false);
+    cin.tie(nullptr);
 
     return 0;
 }

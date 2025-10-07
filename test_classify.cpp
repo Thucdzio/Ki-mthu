@@ -29,8 +29,7 @@ BmiResult bmi_calculate(double weight_kg, double height_m)
     if (weight_kg <= 0 || height_m <= 0)
         throw invalid_argument("Invalid input");
     double raw = weight_kg / (height_m * height_m);
-    double display = float(raw * 10 + 0.5) / 10;
-    return {display, classify(raw)};
+    return {raw, classify(raw)};
 }
 
 #define TEST(expr)                           \
@@ -66,15 +65,15 @@ int main()
     TEST(expect_invalid(0, 1.70));
     TEST(expect_invalid(60, 0));
 
-       TEST(bmi_calculate(53.4, 1.70).category == "Underweight");  // ~18.49
-    TEST(bmi_calculate(53.5, 1.70).category == "Normal");       // ~18.53
-    TEST(bmi_calculate(71.9, 1.70).category == "Normal");       // ~24.88
-    TEST(bmi_calculate(72.3, 1.70).category == "Overweight");   // ~25.04
-    TEST(bmi_calculate(86.3, 1.70).category == "Overweight");   // ~29.86
-    TEST(bmi_calculate(86.7, 1.70).category == "Obesity I");    // ~30.00
-    TEST(bmi_calculate(100.9, 1.70).category == "Obesity II");  // ~34.93
-    TEST(bmi_calculate(101.2, 1.70).category == "Obesity II");  // ~35.03
-    TEST(bmi_calculate(115.3, 1.70).category == "Obesity III"); // ~39.94
+    TEST(bmi_calculate(53.4, 1.70).category == "Underweight");
+    TEST(bmi_calculate(53.5, 1.70).category == "Normal");
+    TEST(bmi_calculate(71.9, 1.70).category == "Normal");
+    TEST(bmi_calculate(72.3, 1.70).category == "Overweight");
+    TEST(bmi_calculate(86.3, 1.70).category == "Overweight");
+    TEST(bmi_calculate(86.7, 1.70).category == "Obesity I");
+    TEST(bmi_calculate(100.9, 1.70).category == "Obesity II");
+    TEST(bmi_calculate(101.2, 1.70).category == "Obesity II");
+    TEST(bmi_calculate(115.3, 1.70).category == "Obesity III");
     TEST(bmi_calculate(115.6, 1.70).category == "Obesity III");
     TEST(bmi_calculate(115.9, 1.70).category == "Obesity III");
 
