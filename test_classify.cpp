@@ -75,7 +75,7 @@ int main()
     TEST(bmi_calculate(86.7, 1.70).category == "Obesity I");
     TEST(bmi_calculate(100.9, 1.70).category == "Obesity II");
     TEST(bmi_calculate(101.2, 1.70).category == "Obesity II");
-    TEST(bmi_calculate(115.3, 1.70).category == "Obesity III");
+    TEST(bmi_calculate(115.3, 1.70).category == "Obesity II");
     TEST(bmi_calculate(115.6, 1.70).category == "Obesity III");
     TEST(bmi_calculate(115.9, 1.70).category == "Obesity III");
 
