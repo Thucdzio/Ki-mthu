@@ -1,15 +1,25 @@
 name: C++ Test
 
-on: [push, pull_request]
+on:
+  push:
+    branches: ["main"]
+  pull_request:
+    branches: ["main"]
+  workflow_dispatch:
 
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-      - name: Cài đặt trình biên dịch
-        run: sudo apt-get install g++ -y
-      - name: Biên dịch và kiểm thử
+      - uses: actions/checkout@v4
+
+      - name: Cài đặt g++
         run: |
-          g++ -o test_classify test_classify.cpp
-          ./test_classify
+          sudo apt-get update
+          sudo apt-get install -y g++
+
+      - name: Biên dịch
+        run: g++ -std=c++17 -O2 -o test_classify test_classify.cpp
+
+      - name: Chạy test
+        run: ./test_classify
