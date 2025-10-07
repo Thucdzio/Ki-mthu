@@ -2,6 +2,7 @@
 #include <iostream>
 #include <stdexcept>
 #include <string>
+#include <cmath>
 using namespace std;
 
 string classify(double bmi)
@@ -29,7 +30,8 @@ BmiResult bmi_calculate(double weight_kg, double height_m)
     if (weight_kg <= 0 || height_m <= 0)
         throw invalid_argument("Invalid input");
     double raw = weight_kg / (height_m * height_m);
-    return {raw, classify(raw)};
+    double display = floor(raw * 10 + 0.5) / 10;
+    return {display, classify(raw)};
 }
 
 #define TEST(expr)                           \
